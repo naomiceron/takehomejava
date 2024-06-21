@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -38,7 +39,7 @@ public class WidgetController {
   }
 
   @PostMapping
-  public ResponseEntity<Widget> createOrUpdateWidget(@RequestBody Widget widget) {
+  public ResponseEntity<Widget> createOrUpdateWidget(@Valid @RequestBody Widget widget) {
     return ResponseEntity.ok(widgetService.createOrUpdateWidget(widget));
   }
 
@@ -53,7 +54,7 @@ public class WidgetController {
   }
 
   @PatchMapping
-  public ResponseEntity<Widget> updateWidget(@RequestBody Widget widget) {
+  public ResponseEntity<Widget> updateWidget(@Valid @RequestBody Widget widget) {
     return ResponseEntity.ok(widgetService.updateWidget(widget));
   }
 }
