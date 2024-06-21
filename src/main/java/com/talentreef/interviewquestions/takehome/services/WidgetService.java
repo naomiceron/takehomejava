@@ -25,4 +25,20 @@ public class WidgetService {
     return widgetRepository.findAll();
   }
 
+  public Widget getWidgetById(String name) {
+    return widgetRepository.findById(name)
+            .orElseThrow(() -> new RuntimeException("Widget not found"));
+  }
+
+  public Widget createOrUpdateWidget(Widget widget) {
+    return widgetRepository.save(widget);
+  }
+
+  public void deleteWidget(String name) {
+    widgetRepository.deleteById(name);
+  }
+
+  public Widget updateWidget(Widget widget) {
+    return widgetRepository.save(widget);
+  }
 }
